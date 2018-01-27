@@ -2,7 +2,8 @@
 
 ## ServletContextListener
 
-javax.​servlet
+package javax.servlet
+
 public interface ServletContextListener extends EventListener
 
 - Interface for receiving notification events about ServletContext lifecycle changes.
