@@ -16,17 +16,6 @@ import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 
 /**
- * 
- javax.​servlet
-public interface ServletContextListener extends EventListener
-
-Interface for receiving notification events about ServletContext lifecycle changes.
-In order to receive these notification events, the implementation class must be either declared in the deployment descriptor of the web application, annotated with WebListener, or registered via one of the addListener methods defined on ServletContext.
-Implementations of this interface are invoked at their contextInitialized(javax.servlet.ServletContextEvent) method in the order in which they have been declared, and at their contextDestroyed(javax.servlet.ServletContextEvent) method in reverse order.
-Since:
-Servlet 2.3
-See Also:
-ServletContextEvent
  * @author james
  */
 @WebListener
@@ -37,11 +26,15 @@ public class GetConnListener implements ServletContextListener {
     public void contextInitialized(ServletContextEvent sce) {
         try {
             ServletContext application = sce.getServletContext();
+            
+            // get initial parameters from web.xml.
             String driver = application.getInitParameter("driver");
             String url = application.getInitParameter("url");
             String user = application.getInitParameter("user");
             String pass = application.getInitParameter("pass");
 
+            // Retrieve the Class object of mysql's jdbc driver, that 
+            // is 'com.mysql.jdbc.Driver';
             Class.forName(driver);
             Connection conn = DriverManager.getConnection(url, user, pass);
             // Set the achieved `Connection` instance into the `ServletContext`,
