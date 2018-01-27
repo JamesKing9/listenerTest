@@ -1,5 +1,9 @@
 # listenerTest
 
+Once the web application are deployed, the **deployment descriptor of the web application** will be loaded  and the context-param will be initianizated. and then, the event will be monitored by the instance who implements `ServletContextListener`   interface. and inside the class's method `contextInitialized(ServletContextEvent sce)` we can do ourself's business.
+
+
+
 ## ServletContextListener
 ```java
 package javax.servlet

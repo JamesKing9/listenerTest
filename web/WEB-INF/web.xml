@@ -10,6 +10,11 @@
         </session-timeout>
     </session-config>
     
+    <!--
+    Element: context-param
+        The context-param element contains the declaration of a web 
+        application's servlet context initialization parameters.
+    -->
     <context-param>
         <param-name>driver</param-name>
         <param-value>com.mysql.jdbc.Driver</param-value>
