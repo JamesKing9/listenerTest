@@ -24,9 +24,10 @@ public class GetConnListener implements ServletContextListener {
     // 应该启动时，该方法被调用。
     @Override
     public void contextInitialized(ServletContextEvent sce) {
+
         try {
             ServletContext application = sce.getServletContext();
-            
+
             // get initial parameters from web.xml.
             String driver = application.getInitParameter("driver");
             String url = application.getInitParameter("url");
@@ -49,15 +50,15 @@ public class GetConnListener implements ServletContextListener {
     // 应该关闭时，该方法被调用。
     @Override
     public void contextDestroyed(ServletContextEvent sce) {
-        ServletContext application = sce.getServletContext();
-        Connection conn = (Connection) application.getAttribute("conn");
-        if (conn != null) {
-
-            try {
+        
+        try {
+            ServletContext application = sce.getServletContext();
+            Connection conn = (Connection) application.getAttribute("conn");
+            if (conn != null) {
                 conn.close();
-            } catch (SQLException ex) {
-                ex.printStackTrace();
             }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
         }
     }
 
